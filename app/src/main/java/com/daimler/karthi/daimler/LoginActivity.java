@@ -4,6 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -12,6 +17,19 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ArrayList json=new ArrayList();
+        json.add(new BasicNameValuePair("username","one"));
+        json.add(new BasicNameValuePair("password","one"));
+        new AsyncPost("http://www.prn.t15.org/clublife/checkOwnerLogin.php", json, new AsyncListener() {
+            @Override
+            public void onResponse(String response) {
+                myToast(response);
+            }
+        });
+    }
+
+    private void myToast(String s) {
+        Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
     }
 
     @Override
