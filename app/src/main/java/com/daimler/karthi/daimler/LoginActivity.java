@@ -21,7 +21,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button register=(Button)findViewById(R.id.login);
+        Button register=(Button)findViewById(R.id.signup);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
