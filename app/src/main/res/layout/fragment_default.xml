@@ -192,7 +192,7 @@
         android:layout_height="wrap_content"
         android:text="7000000"
         android:textSize="25sp"
-        android:id="@+id/textView17"
+        android:id="@+id/premiummax"
         android:layout_above="@+id/premiumseekBar"
         android:layout_toRightOf="@+id/textView16"
         android:layout_toEndOf="@+id/textView16" />

@@ -1,12 +1,23 @@
 package com.daimler.karthi.daimler;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
 
 
 /**
@@ -22,6 +33,12 @@ public class DefaultFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    String baseURL;
+
+    TextView minpre = null,maxpre = null,minpay = null,maxpay = null;
+    SeekBar sminpre,smaxpre,sminpay,smaxpay;
+    int thres=5000,max=50000;
+    String dateString,timeString;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -56,6 +73,7 @@ public class DefaultFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -67,7 +85,162 @@ public class DefaultFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_default, container, false);
+        View view= inflater.inflate(R.layout.fragment_default, container, false);
+        minpre=(TextView)view.findViewById(R.id.premiummin);
+        maxpre=(TextView)view.findViewById(R.id.premiummax);
+        minpay=(TextView)view.findViewById(R.id.initialpaymentmin);
+        maxpay=(TextView)view.findViewById(R.id.initialpaymentmax);
+        baseURL=getString(R.string.baseURL);
+
+        ((SeekBar)view.findViewById(R.id.premiumseekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                minpre.setText((thres + (max * progress / 100)) + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        ((SeekBar)view.findViewById(R.id.initialpayseekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                maxpay.setText((thres + (max * progress / 10)) + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        ((SeekBar)view.findViewById(R.id.seekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                maxpre.setText((thres + (max * progress / 100)) + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        ((SeekBar)view.findViewById(R.id.seekBar2)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                minpay.setText((thres + (max * progress / 10)) + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        ((Button)view.findViewById(R.id.schedule)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                schedule();
+            }
+        });
+        return view;
+    }
+
+    private void schedule() {
+
+        TimePickerFragment timeFrag=new TimePickerFragment();
+        timeFrag.setListener(new MyClickListener() {
+            @Override
+            public void onClick(String data) {
+                timeString=data;
+                sendData();
+
+            }
+        });
+        timeFrag.show(getActivity().getSupportFragmentManager(), "TimePicker");
+
+        DatePickerFragment dateFrag=new DatePickerFragment();
+        dateFrag.setListener(new MyClickListener() {
+            @Override
+            public void onClick(String data) {
+                dateString = data;
+
+            }
+        });
+        dateFrag.show(getActivity().getSupportFragmentManager(), "DatePicker");
+
+
+
+    }
+
+    private void sendData() {
+
+        String url=baseURL+"scheduleAppointment.php";
+        ArrayList param=new ArrayList();
+        param.add(new BasicNameValuePair("userid",getActivity().getSharedPreferences("daimler", Context.MODE_PRIVATE).getString("userid","")));
+        param.add(new BasicNameValuePair("minpre",minpre.getText().toString()));
+        param.add(new BasicNameValuePair("maxpre",maxpre.getText().toString()));
+        param.add(new BasicNameValuePair("minpay", minpay.getText().toString()));
+        param.add(new BasicNameValuePair("maxpay", maxpay.getText().toString()));
+        param.add(new BasicNameValuePair("date", dateString));
+        param.add(new BasicNameValuePair("time", timeString));
+
+
+        final ProgressDialog loading=new ProgressDialog(getActivity());
+        loading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        loading.setMessage("Submitting...");
+        loading.setIndeterminate(true);
+        loading.setCancelable(false);
+        loading.show();
+
+        new AsyncPost(url, param, new AsyncListener() {
+            @Override
+            public void onResponse(String response) {
+                loading.cancel();
+                if(response==null){
+                    myToast("Try Again");
+                    return;
+                }
+                if(response.equals("success")){
+                    myToast("Successfully Schedule");
+                    return;
+                }else{
+                    myToast("Try Again");
+                    return;
+                }
+            }
+        });
+    }
+
+    private void myToast(String s) {
+        Toast.makeText(getActivity().getApplicationContext(),s,Toast.LENGTH_SHORT);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
