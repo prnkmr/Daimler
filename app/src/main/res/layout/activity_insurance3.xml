@@ -114,11 +114,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recheck"
+        android:text="check"
         android:id="@+id/recheck"
         android:layout_below="@+id/verification"
         android:layout_alignRight="@+id/verification"
-        android:layout_alignEnd="@+id/verification" />
+        android:layout_alignEnd="@+id/verification"
+        android:onClick="te" />
 
 
 </RelativeLayout>

@@ -4,6 +4,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
 
 
 public class Insurance3 extends ActionBarActivity {
@@ -12,6 +20,27 @@ public class Insurance3 extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insurance3);
+        ((Button)findViewById(R.id.recheck)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url=getString(R.string.baseURL)+"toClient.php";
+                ArrayList param=new ArrayList();
+                param.add(new BasicNameValuePair("userid","1"));
+                new AsyncPost(url, param, new AsyncListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response==null){
+                            Toast.makeText(getApplicationContext(),"Try Again",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if(response=="1"){
+                            ImageView img=(ImageView)findViewById(R.id.verification);
+                            img.setImageResource(R.drawable.correct);
+                        }
+                    }
+                })
+            }
+        });
     }
 
 
