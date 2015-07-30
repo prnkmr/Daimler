@@ -1,19 +1,33 @@
 package com.daimler.karthi.daimler;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 
 public class Insurance2 extends ActionBarActivity {
-
+ImageView insureimg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insurance2);
+         insureimg=(ImageView)findViewById(R.id.imageView2);
+        Intent in = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(in,0);
+
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bmp =(Bitmap)data.getExtras().get("data");
+        insureimg.setImageBitmap(bmp);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
