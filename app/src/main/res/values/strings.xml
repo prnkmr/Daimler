@@ -2,7 +2,6 @@
 <resources>
     <string name="baseURL">http://www.praveen.t15.org/daimler/</string>
 
-
     <string name="app_name">Daimler</string>
     <string name="login">Damiler Finance</string>
     <string name="premium">Premium</string>
@@ -24,9 +23,9 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_switcher">Switcher</string>
-    <string name="title_section1">Plan</string>
-    <string name="title_section2">Loan</string>
-    <string name="title_section3">Insurance</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
