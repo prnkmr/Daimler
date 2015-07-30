@@ -15,23 +15,63 @@
         android:width="260dp"
         android:height="40dp"
         android:hint="Username"
+        android:background="#ffffffff"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="126dp"
-        android:background="#ffffffff" />
+        android:layout_marginTop="61dp" />
 
     <EditText
+
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/rpassword"
         android:hint="Password"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:background="#ffffffff"
         android:width="260dp"
         android:height="40dp"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/rusername"
+        android:layout_alignLeft="@+id/rusername"
+        android:layout_alignStart="@+id/rusername" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/retypepassword"
+        android:layout_below="@+id/rpassword"
+        android:layout_alignLeft="@+id/rpassword"
+        android:layout_alignStart="@+id/rpassword"
+        android:layout_marginTop="53dp"
+        android:width="260dp"
+        android:hint="Retype Password"
+        android:background="#ffffffff"
         />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/retypepassword"
+        android:layout_alignRight="@+id/retypepassword"
+        android:layout_alignEnd="@+id/retypepassword"
+        android:layout_marginTop="58dp"
+        android:background="#ffffffff"
+        android:width="260dp"
+        android:hint="Email ID"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
