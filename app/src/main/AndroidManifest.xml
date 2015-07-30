@@ -26,6 +26,10 @@
             android:name=".Switcher"
             android:label="@string/title_activity_switcher" >
         </activity>
+        <activity
+            android:name=".Insurance2"
+            android:label="@string/title_activity_insurance2" >
+        </activity>
     </application>
 
 </manifest>
