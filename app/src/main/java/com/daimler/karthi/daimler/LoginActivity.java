@@ -27,9 +27,6 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(!getSharedPreferences("daimler",MODE_PRIVATE).getString("userid","").equals("")){
-            onLogin();
-        }
         baseURL=getString(R.string.baseURL);
         setContentView(R.layout.activity_login);
         username=(EditText)findViewById(R.id.username);
@@ -83,8 +80,8 @@ public class LoginActivity extends ActionBarActivity {
                             editor.putString("nextPremium",respJson.getString("nextPremium"));
                             editor.putString("date",respJson.getString("date"));
                             editor.putString("remainingDues",respJson.getString("remainingDues"));
-                            editor.putString("date",respJson.getString("date"));
-                            editor.putString("date",respJson.getString("date"));
+                            editor.putString("balanceAmount",respJson.getString("balanceAmount"));
+                            editor.putString("totalDues",respJson.getString("totalDues"));
 
                             editor.commit();
                             onLogin();
