@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -71,21 +73,36 @@ public class LoginActivity extends ActionBarActivity {
                         myToast("Try Again");
                         return;
                     }
-                    String status=response.split("`")[0];
-                    if(status.equals("success")){
-                        String userid=response.split("`")[1];
-                        myToast(userid);
-                        SharedPreferences.Editor editor=getSharedPreferences("daimler",MODE_PRIVATE).edit();
-                        editor.putString("userid",userid);
-                        editor.commit();
-                        onLogin();
-                    }else if(status.equals("fail")){
-                        myToast("Wrong Username/Password");
-                        return;
-                    }else{
-                        myToast("Server Error");
-                        return;
+                    try {
+                        JSONObject respJson=new JSONObject(response);
+                        if(respJson.getString("status").equals("success")){
+                            String userid=respJson.getString("userid");
+                            myToast(userid);
+                            SharedPreferences.Editor editor=getSharedPreferences("daimler",MODE_PRIVATE).edit();
+                            editor.putString("userid",userid);
+                            editor.putString("nextPremium",respJson.getString("nextPremium"));
+                            editor.putString("date",respJson.getString("date"));
+                            editor.putString("remainingDues",respJson.getString("remainingDues"));
+                            editor.putString("date",respJson.getString("date"));
+                            editor.putString("date",respJson.getString("date"));
+
+                            editor.commit();
+                            onLogin();
+                        }else if(respJson.getString("status").equals("fail")){
+                            myToast("Wrong Username/Password");
+                            return;
+
+
+                        }else{
+                            myToast("Server Error");
+                            return;
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+
+
 
                 }
                 });
