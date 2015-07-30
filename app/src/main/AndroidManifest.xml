@@ -30,6 +30,10 @@
             android:name=".Insurance2"
             android:label="@string/title_activity_insurance2" >
         </activity>
+        <activity
+            android:name=".Insurance3"
+            android:label="@string/title_activity_insurance3" >
+        </activity>
     </application>
 
 </manifest>
