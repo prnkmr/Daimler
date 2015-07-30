@@ -38,9 +38,13 @@ public class RegisterActivity extends ActionBarActivity {
                     return;
                 }
 
-                myToast("success");
+                register();
             }
         });
+    }
+
+    private void register() {
+        String url=baseURL+"";
     }
 
     private void myToast(String s) {
