@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -79,6 +80,8 @@ public class Loan extends Fragment {
         int totalDue=Integer.parseInt(preferences.getString("totalDues","1"));
         int remainingDue=Integer.parseInt(preferences.getString("remainingDues","1"));
         int percent=remainingDue*100/totalDue;
+        ProgressBar perc=(ProgressBar)view.findViewById(R.id.amountprogressBar);
+        perc.setProgress(percent);
         Log.d("per", percent + "");
         return view;
     }
