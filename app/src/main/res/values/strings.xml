@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Daimler</string>
-    <string name="baseURL">http://www.praveen.t15.org/daimler/</string>
 
     <string name="login">Damiler Finance</string>
     <string name="loginbut">Login</string>
