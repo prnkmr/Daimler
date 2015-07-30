@@ -4,14 +4,47 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class RegisterActivity extends ActionBarActivity {
+    EditText username,password,retypePassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        username=(EditText)findViewById(R.id.rusername);
+        password=(EditText)findViewById(R.id.rpassword);
+        retypePassword=(EditText)findViewById(R.id.retypepassword);
+        Button register=(Button)findViewById(R.id.rregister);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(username.getText().toString().equals("")){
+                    myToast("Please Give Username");
+                    return;
+                }
+                if(password.getText().toString().equals("")){
+                    myToast("Please Give a valid Password");
+                    return;
+                }
+                if(!password.getText().toString().equals(retypePassword.getText().toString())){
+                    myToast("Password Mismatch");
+                    return;
+                }
+
+                myToast("success");
+            }
+        });
+    }
+
+    private void myToast(String s) {
+        Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
     }
 
     @Override
