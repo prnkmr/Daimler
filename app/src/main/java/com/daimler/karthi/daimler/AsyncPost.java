@@ -1,6 +1,7 @@
 package com.daimler.karthi.daimler;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -44,6 +45,7 @@ public class AsyncPost extends AsyncTask {
             post.setEntity(new UrlEncodedFormEntity(json));
             httpResponse=client.execute(post);
             response= EntityUtils.toString(httpResponse.getEntity());
+            Log.d("Response",response);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {

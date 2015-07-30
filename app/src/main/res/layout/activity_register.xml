@@ -56,7 +56,7 @@
         android:layout_height="40dp"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/email"
         android:layout_below="@+id/retypepassword"
         android:layout_alignRight="@+id/retypepassword"
         android:layout_alignEnd="@+id/retypepassword"
