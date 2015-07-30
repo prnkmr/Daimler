@@ -4,8 +4,8 @@
 
     <string name="app_name">Daimler</string>
     <string name="login">Damiler Finance</string>
-    <string name="premium">Premium</string>
-    <string name="initialpayment">Initial Payment</string>
+    <string name="premium">Premium :</string>
+    <string name="initialpayment">Initial Pay:</string>
     <string name="duration">Duration  :</string>
     <string name="visit">Visit</string>
     <string name="call">Call</string>

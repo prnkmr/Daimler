@@ -24,9 +24,10 @@
         android:id="@+id/premiumseekBar"
         android:indeterminate="false"
         android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/visit"
+        android:layout_toEndOf="@+id/visit" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,10 +36,12 @@
         android:textSize="25sp"
         android:text="@string/initialpayment"
         android:id="@+id/textView2"
-        android:layout_below="@+id/premiumseekBar"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/seekBar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="41dp" />
+        android:layout_alignRight="@+id/schedule"
+        android:layout_alignEnd="@+id/schedule" />
 
     <SeekBar
         android:layout_width="fill_parent"
@@ -46,30 +49,12 @@
         android:minHeight="40dp"
         android:maxHeight="40dp"
         android:id="@+id/initialpayseekBar"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/duration"
-        android:textSize="25sp"
-        android:id="@+id/duration"
-        android:layout_below="@+id/initialpayseekBar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:textSize="25sp"
-        android:id="@+id/durationtext"
-        android:layout_alignTop="@+id/duration"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/seekBar2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="48dp"
+        android:layout_alignLeft="@+id/seekBar2"
+        android:layout_alignStart="@+id/seekBar2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -121,4 +106,124 @@
         android:id="@+id/switch1"
         android:layout_alignBottom="@+id/visit"
         android:layout_centerHorizontal="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_below="@+id/premiumseekBar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="41dp"
+        android:layout_alignLeft="@+id/premiumseekBar"
+        android:layout_alignStart="@+id/premiumseekBar" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar2"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/visit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Min"
+        android:textSize="25sp"
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/premiumseekBar"
+        android:layout_toLeftOf="@+id/visit"
+        android:layout_toStartOf="@+id/visit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max"
+        android:textSize="25sp"
+        android:id="@+id/textView13"
+        android:layout_alignBottom="@+id/seekBar"
+        android:layout_alignLeft="@+id/textView12"
+        android:layout_alignStart="@+id/textView12" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Min"
+        android:textSize="25sp"
+        android:id="@+id/textView14"
+        android:layout_alignTop="@+id/seekBar2"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max"
+        android:textSize="25sp"
+        android:id="@+id/textView15"
+        android:layout_alignBottom="@+id/initialpayseekBar"
+        android:layout_alignLeft="@+id/textView14"
+        android:layout_alignStart="@+id/textView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5000000"
+        android:textSize="25sp"
+        android:id="@+id/premiummin"
+        android:layout_above="@+id/premiumseekBar"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   -   "
+        android:id="@+id/textView16"
+        android:textSize="25sp"
+        android:layout_above="@+id/premiumseekBar"
+        android:layout_toRightOf="@+id/switch1"
+        android:layout_toEndOf="@+id/switch1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7000000"
+        android:textSize="25sp"
+        android:id="@+id/textView17"
+        android:layout_above="@+id/premiumseekBar"
+        android:layout_toRightOf="@+id/textView16"
+        android:layout_toEndOf="@+id/textView16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5000000"
+        android:textSize="25sp"
+        android:id="@+id/initialpaymentmin"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  -  "
+        android:textSize="25sp"
+        android:id="@+id/textView19"
+        android:layout_alignTop="@+id/initialpaymentmin"
+        android:layout_toRightOf="@+id/initialpaymentmin"
+        android:layout_toEndOf="@+id/initialpaymentmin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7000000"
+        android:textSize="25sp"
+        android:id="@+id/initialpaymentmax"
+        android:layout_alignTop="@+id/textView19"
+        android:layout_toRightOf="@+id/textView19"
+        android:layout_toEndOf="@+id/textView19" />
+
 </RelativeLayout>
