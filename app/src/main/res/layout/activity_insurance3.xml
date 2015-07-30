@@ -1,5 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -12,7 +15,10 @@
         android:layout_height="200dp"
         android:id="@+id/dfsiworker"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:src="@drawable/dfsiagent"
+        android:layout_alignRight="@+id/textView11"
+        android:layout_alignEnd="@+id/textView11" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,14 +26,14 @@
         android:text="Name : "
         android:textSize="25sp"
         android:id="@+id/textView9"
-        android:layout_centerVertical="true"
+        android:layout_alignTop="@+id/dfsiworkername"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Karthick"
         android:textSize="25sp"
         android:id="@+id/dfsiworkername"
         android:layout_centerVertical="true"
@@ -44,17 +50,19 @@
         android:id="@+id/textView10"
         android:layout_below="@+id/textView9"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="39dp" />
+        android:layout_alignParentStart="true" />
 
     <ProgressBar
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:id="@+id/progressBar"
-        android:layout_marginTop="39dp"
         android:layout_below="@+id/textView10"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:progress="10"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,9 +89,9 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/submitclaim"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/dfsiworkername"
-        android:layout_alignEnd="@+id/dfsiworkername" />
+        android:layout_alignTop="@+id/trackdfsi"
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10" />
 
     <Button
         android:layout_width="wrap_content"
@@ -97,10 +105,20 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/imageView3"
+        android:id="@+id/verification"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/progressBar"
-        android:layout_alignEnd="@+id/progressBar" />
+        android:layout_alignEnd="@+id/progressBar"
+        android:src="@drawable/wrong" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recheck"
+        android:id="@+id/recheck"
+        android:layout_below="@+id/verification"
+        android:layout_alignRight="@+id/verification"
+        android:layout_alignEnd="@+id/verification" />
 
 
 </RelativeLayout>
