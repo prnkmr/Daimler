@@ -1,9 +1,12 @@
 package com.daimler.karthi.daimler;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -17,6 +20,14 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Button register=(Button)findViewById(R.id.login);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+            }
+        });
         ArrayList json=new ArrayList();
         json.add(new BasicNameValuePair("username","one"));
         json.add(new BasicNameValuePair("password","one"));

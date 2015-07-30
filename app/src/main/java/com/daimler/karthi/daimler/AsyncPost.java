@@ -9,6 +9,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -25,6 +26,7 @@ public class AsyncPost extends AsyncTask {
     HttpClient client;
     HttpPost post;
     HttpResponse httpResponse;
+    String response;
 
     AsyncPost(String URL,List<NameValuePair> json,AsyncListener caller){
         this.URL=URL;
@@ -41,6 +43,7 @@ public class AsyncPost extends AsyncTask {
         try {
             post.setEntity(new UrlEncodedFormEntity(json));
             httpResponse=client.execute(post);
+            response= EntityUtils.toString(httpResponse.getEntity());
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
@@ -54,6 +57,6 @@ public class AsyncPost extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        caller.onResponse(httpResponse.getEntity().toString());
+        caller.onResponse(response);
     }
 }
