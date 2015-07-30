@@ -71,16 +71,6 @@
         android:layout_alignTop="@+id/duration"
         android:layout_centerHorizontal="true" />
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Switch"
-        android:id="@+id/switch1"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/durationtext"
-        android:layout_alignLeft="@+id/durationtext"
-        android:layout_alignStart="@+id/durationtext" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,9 +78,10 @@
         android:text="@string/visit"
         android:textSize="25sp"
         android:id="@+id/visit"
-        android:layout_alignBottom="@+id/switch1"
+        android:layout_above="@+id/schedule"
         android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginBottom="54dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,11 +90,11 @@
         android:text="@string/call"
         android:textSize="25sp"
         android:id="@+id/call"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
         android:layout_alignBottom="@+id/switch1"
-        android:layout_toRightOf="@+id/durationtext"
-        android:layout_toEndOf="@+id/durationtext"
-        android:layout_marginLeft="46dp"
-        android:layout_marginStart="46dp" />
+        android:layout_toRightOf="@+id/switch1"
+        android:layout_toEndOf="@+id/switch1" />
 
     <Button
         android:layout_width="wrap_content"
@@ -122,4 +113,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/call"
         android:layout_alignEnd="@+id/call" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/switch1"
+        android:layout_alignBottom="@+id/visit"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
