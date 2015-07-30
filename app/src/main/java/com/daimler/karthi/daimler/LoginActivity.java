@@ -2,6 +2,7 @@ package com.daimler.karthi.daimler;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,9 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(!getSharedPreferences("daimler",MODE_PRIVATE).getString("userid","").equals("")){
+            onLogin();
+        }
         baseURL=getString(R.string.baseURL);
         setContentView(R.layout.activity_login);
         username=(EditText)findViewById(R.id.username);
@@ -71,6 +75,10 @@ public class LoginActivity extends ActionBarActivity {
                     if(status.equals("success")){
                         String userid=response.split("`")[1];
                         myToast(userid);
+                        SharedPreferences.Editor editor=getSharedPreferences("daimler",MODE_PRIVATE).edit();
+                        editor.putString("userid",userid);
+                        editor.commit();
+                        onLogin();
                     }else if(status.equals("fail")){
                         myToast("Wrong Username/Password");
                         return;
@@ -97,6 +105,8 @@ public class LoginActivity extends ActionBarActivity {
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -110,5 +120,8 @@ public class LoginActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    void onLogin(){
+        startActivity(new Intent(this,Switcher.class));
     }
 }

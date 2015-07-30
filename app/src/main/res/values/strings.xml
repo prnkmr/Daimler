@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="baseURL">http://www.praveen.t15.org/daimler/</string>
 
     <string name="app_name">Daimler</string>
     <string name="login">Damiler Finance</string>
