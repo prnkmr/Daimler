@@ -28,7 +28,7 @@
     <string name="title_section3">Insurance</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
+    <string name="action_example"></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_insurance2">Claim</string>
     <string name="title_activity_insurance3">Track</string>
