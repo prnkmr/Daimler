@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 
 public class Switcher extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks,DefaultFragment.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,DefaultFragment.OnFragmentInteractionListener,Insurance.OnFragmentInteractionListener,Loan.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
