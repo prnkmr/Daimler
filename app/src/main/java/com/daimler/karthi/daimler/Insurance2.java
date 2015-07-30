@@ -7,18 +7,37 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 
 public class Insurance2 extends ActionBarActivity {
 ImageView insureimg;
+Button claimnow;
+Button help;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insurance2);
          insureimg=(ImageView)findViewById(R.id.imageView2);
+         claimnow=(Button)findViewById(R.id.claim);
+        help=(Button)findViewById(R.id.urgent);
         Intent in = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(in,0);
+        claimnow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
