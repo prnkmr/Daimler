@@ -10,6 +10,11 @@
     <string name="call">Call</string>
     <string name="schedule">Schedule</string>
     <string name="noidea">No Idea?</string>
+    <string name="nextpremium">Next Premium : </string>
+    <string name="duedate">Due Date : </string>
+    <string name="yourprogress">Your Progress : </string>
+    <string name="balance">Balance Amount : </string>
+    <string name="pay">Pay</string>
     <string name="loginbut">Login</string>
     <string name="signup">Create Account</string>
     <string name="action_settings">Settings</string>
